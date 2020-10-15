@@ -21,7 +21,7 @@
         </v-card>
         <p>
           <b>Descrição</b>:
-          <span>{{ character.description || 'não disponível' }}</span>
+          <span id="character-characterDescription">{{ character.description || 'não disponível' }}</span>
         </p>
         <template>
           <v-expansion-panels>

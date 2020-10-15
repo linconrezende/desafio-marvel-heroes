@@ -245,7 +245,7 @@ describe('Character.vue', () => {
     vuetify = new Vuetify()
   })
 
-  it('renders props.msg when passed', () => {
+  it('Renderiza informações do personagem', () => {
     const wrapper = mount(Character, {
       localVue,
       vuetify,
@@ -253,6 +253,14 @@ describe('Character.vue', () => {
         character: _char
       }
     })
+    // Verifica se o nome foi renderizado (todos os personagens deveriam ter um nome)
     expect(wrapper.find('#character-characterName').text()).toBe(_char.name)
+
+    // Verifica se a descrição foi renderizada
+    if (_char.description) {
+      expect(wrapper.find('#character-characterDescription').text()).toBe(_char.description)
+    } else {
+      expect(wrapper.find('#character-characterDescription').text()).toBe('não disponível')
+    }
   })
 })
