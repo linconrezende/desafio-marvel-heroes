@@ -4,6 +4,7 @@
 </p>
 
 [Download do APK - Versão 1.0.1 / 0.0.4 DEBUG](https://github.com/linconrezende/desafio-marvel-heroes/blob/main/cordova/dist/personagens-marvel-debug-v1.0.1_v0.0.4.apk?raw=true)
+
 CLIQUE AQUI PARA ACESSAR O [LIVE DEMO](https://linconrezende.github.io/desafio-marvel-heroes/)
 
 # Desafio de Android
