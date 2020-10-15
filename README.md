@@ -70,6 +70,12 @@ Para fazer o build do cordova, navegue até a pasta cordova.
 cd cordova
 cordova build android --debug
 ```
+### Testes
+Para executar os testes, navegue até a pastado vue e execute:
+```cmd
+cd vue
+npm run test:unit
+```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
