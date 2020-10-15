@@ -205,7 +205,7 @@ export default {
             })
           }
           // Mostrar o dialog para exibir informações do personagem
-          vm.dialogs.character = true
+          vm.toggleDialog('character', true)
           vm.loadingCharacter = false
         })
         .catch(error => {
@@ -213,18 +213,39 @@ export default {
           vm.$snotify.error(error.message)
           vm.loadingCharacter = false
           // Mostrar o dialog mesmo assim, já que as informações foram preenchidas mesmo antes da chamada da api
-          vm.dialogs.character = true
+          vm.toggleDialog('character', true)
         })
     },
     closeCharacterDialog() {
       var vm = this
       vm.selectedCharacter = null
-      vm.dialogs.character = false
+      vm.toggleDialog('character', false)
     },
     inputPagination(val) {
       var vm = this
       console.debug(val) // for now, this is useless
       vm.getCharacters()
+    },
+    toggleDialog(name, open) {
+      if (open) {
+        this.$router.push(`#dialog-${name}`)
+      } else {
+        this.$router.back()
+      }
+    }
+  },
+  watch: {
+    '$route.hash'(newHash) {
+      var vm = this
+      if (newHash.indexOf('#dialog-') === 0) {
+        // OPEN THE CURRENT DIALOG
+        vm.dialogs[newHash.replace('#dialog-', '')] = true
+      } else {
+        // CLOSE ALL DIALOGS
+        for (const prop in vm.dialogs) {
+          vm.dialogs[prop] = false
+        }
+      }
     }
   }
 }
