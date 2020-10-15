@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint"
   },
   "main": "background.js",
@@ -26,9 +27,11 @@
     "@vue/cli-plugin-babel": "^4.5.6",
     "@vue/cli-plugin-eslint": "^4.5.6",
     "@vue/cli-plugin-router": "^4.5.6",
+    "@vue/cli-plugin-unit-jest": "^4.5.7",
     "@vue/cli-plugin-vuex": "^4.5.6",
     "@vue/cli-service": "^4.5.6",
     "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -58,7 +61,18 @@
     },
     "parserOptions": {
       "parser": "babel-eslint"
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "prettier": {
     "tabWidth": 2,
