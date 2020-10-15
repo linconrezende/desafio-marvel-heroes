@@ -11,7 +11,8 @@ const request = (_method, _api, _data, _urlParams) => {
       `${_ts}${e.VUE_APP_API_PRIVATE_KEY}${e.VUE_APP_API_PUBLIC_KEY}`
     )
     console.log(_ts, _hash)
-    let _params = _urlParams && _urlParams.length > 0 ? `&${_urlParams.join('&')}` : ''
+    let _params =
+      _urlParams && _urlParams.length > 0 ? `&${_urlParams.join('&')}` : ''
     vm.axios({
       method: _method,
       url: `${api_url}${_api}?ts=${_ts}&hash=${_hash}&apikey=${e.VUE_APP_API_PUBLIC_KEY}${_params}`,
