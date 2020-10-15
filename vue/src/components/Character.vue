@@ -20,10 +20,50 @@
           ></v-img>
         </v-card>
         <p><b>Descrição</b>: <span>{{ character.description || 'não disponível' }}</span></p>
-        <p><b>Eventos</b>: <span>{{ character.events.items }}</span></p>
-        <p><b>Comics</b>: <span>{{ character.comics.items }}</span></p>
-        <p><b>Séries</b>: <span>{{ character.series.items }}</span></p>
-        <p><b>Histórias</b>: <span>{{ character.stories.items }}</span></p>
+        <template>
+            <v-expansion-panels>
+                <v-expansion-panel>
+                    <v-expansion-panel-header>
+                        Eventos
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                        <p v-for="(obj, ixObj) in character.events.items" :key="ixObj">
+                            {{obj.name}}
+                        </p>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+                <v-expansion-panel>
+                    <v-expansion-panel-header>
+                        Comics
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                        <p v-for="(obj, ixObj) in character.comics.items" :key="ixObj">
+                            {{obj.name}}
+                        </p>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+                <v-expansion-panel>
+                    <v-expansion-panel-header>
+                        Séries
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                        <p v-for="(obj, ixObj) in character.series.items" :key="ixObj">
+                            {{obj.name}}
+                        </p>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+                <v-expansion-panel>
+                    <v-expansion-panel-header>
+                        Histórias
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                        <p v-for="(obj, ixObj) in character.stories.items" :key="ixObj">
+                            {{obj.name}}
+                        </p>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+            </v-expansion-panels>
+        </template>
       </v-col>
     </v-row>
   </v-container>

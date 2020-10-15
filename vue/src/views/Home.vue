@@ -56,14 +56,13 @@
         <v-dialog
           v-model="dialogs.character"
           fullscreen
-          hide-overlay
           transition="dialog-bottom-transition"
         >
           <v-card>
-            <v-toolbar color="primary">
+            <v-toolbar dense color="primary">
               <v-btn
                 icon
-                @click="selectedCharacter = null; dialogs.character = false"
+                @click="closeCharacterDialog()"
               >
                 <v-icon>fas fa-times</v-icon>
               </v-btn>
@@ -73,6 +72,9 @@
               </v-toolbar-items>
             </v-toolbar>
             <character :character="selectedCharacter" />
+            <div class="pa-5">
+              <v-btn large color="primary" @click="closeCharacterDialog()">Voltar</v-btn>
+            </div>
           </v-card>
         </v-dialog>
       </v-row>
@@ -153,6 +155,11 @@ export default {
       console.debug(_char)
       vm.selectedCharacter = _char
       vm.dialogs.character = true
+    },
+    closeCharacterDialog() {
+      var vm = this
+      vm.selectedCharacter = null
+      vm.dialogs.character = false
     },
     inputPagination(val) {
       var vm = this
