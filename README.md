@@ -2,6 +2,7 @@
 <p align="center">
   <img src="https://github.com/linconrezende/desafio-marvel-heroes/blob/main/cordova/icons/playstore.png?raw=true" height="110" width="110" title="Beyonder">
 </p>
+
 # Desafio de Android
 Desafio para avaliação de habilidades.
 Este projeto faz uma listagem de personagens da marvel e exibe informações detalhadas de cada um deles.
