@@ -3,6 +3,8 @@
   <img src="https://github.com/linconrezende/desafio-marvel-heroes/blob/main/cordova/icons/playstore.png?raw=true" height="110" width="110" title="Beyonder">
 </p>
 
+[Download do APK - Versão 1.0.0 / 0.0.1 DEBUG](https://github.com/linconrezende/desafio-marvel-heroes/blob/main/cordova/dist/personagens-marvel-debug-v1.0.0.apk?raw=true)
+
 # Desafio de Android
 Desafio para avaliação de habilidades.
 Este projeto faz uma listagem de personagens da marvel e exibe informações detalhadas de cada um deles.
