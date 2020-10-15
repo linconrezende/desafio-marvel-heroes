@@ -13,18 +13,15 @@ export default {
   data() {
     return {}
   },
-  methods: {},
-  created() {
+  created() {},
+  mounted() {
     var vm = this
-    vm.$API
-      .Request('get', 'characters', {})
-      .then(result => {
-        console.debug(result)
-      })
-      .catch(error => {
-        console.debug(error)
-      })
+    vm.getCharacters()
   },
-  mounted() {}
+  methods: {
+    getCharacters() {
+      //
+    }
+  }
 }
 </script>
