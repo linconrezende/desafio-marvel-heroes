@@ -60,20 +60,18 @@
         >
           <v-card>
             <v-toolbar dense color="primary">
-              <v-btn
-                icon
-                @click="closeCharacterDialog()"
-              >
+              <v-btn icon @click="closeCharacterDialog()">
                 <v-icon>fas fa-times</v-icon>
               </v-btn>
               <v-toolbar-title>Detalhes do personagem</v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-toolbar-items>
-              </v-toolbar-items>
+              <v-toolbar-items> </v-toolbar-items>
             </v-toolbar>
             <character :character="selectedCharacter" />
             <div class="pa-5">
-              <v-btn large color="primary" @click="closeCharacterDialog()">Voltar</v-btn>
+              <v-btn large color="primary" @click="closeCharacterDialog()"
+                >Voltar</v-btn
+              >
             </div>
           </v-card>
         </v-dialog>
@@ -87,7 +85,7 @@ import Character from './../components/Character'
 export default {
   name: 'Home',
   components: {
-    'character': Character
+    character: Character
   },
   data() {
     return {
