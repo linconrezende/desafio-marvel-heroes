@@ -1,7 +1,10 @@
 <template>
-  <v-container class="">
+  <v-container class="pb-5 mb-5">
     <v-row>
-      <v-col v-for="(char, ixChar) in characters" :key="ixChar">
+      <v-col v-if="fetchingData">
+         <v-icon>fas fa-spinner fa-spin</v-icon> Carregando personagens...
+      </v-col>
+      <v-col v-else-if="characters && characters.length > 0" v-for="(char, ixChar) in characters" :key="ixChar">
         <v-card min-width="200px" @click="openCharacter(char)">
           <v-img
             v-if="char.thumbnail"
@@ -17,6 +20,9 @@
           </v-card-title>
         </v-card>
       </v-col>
+      <v-col v-else>
+        Ops! Nenhum personagem encontrado...
+      </v-col>
       <v-col
         cols="12"
         class="text-caption"
@@ -24,6 +30,9 @@
         v-html="marvelCopy"
       ></v-col>
     </v-row>
+    <br>
+    <br>
+    <br>
     <v-footer app fixed inset>
       <v-container v-if="pagination && pagination.total > 0">
         <v-row>

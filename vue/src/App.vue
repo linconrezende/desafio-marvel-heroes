@@ -61,7 +61,7 @@
       </v-footer>
     </v-navigation-drawer>
     <v-main fluid style="overflow: hidden;">
-      <keep-alive :exclude="['Quiz', 'Select']">
+      <keep-alive>
         <router-view
           @toggle-menu="
             () => {
