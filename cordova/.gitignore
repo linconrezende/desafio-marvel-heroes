@@ -7,3 +7,6 @@ node_modules/
 /plugins/
 /platforms/
 package-lock.json
+
+# Como esta pasta é gerada pelo npm run build na pasta do vue, vamos ignora-la no controle de versões
+www/*
