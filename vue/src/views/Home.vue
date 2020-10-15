@@ -2,15 +2,22 @@
   <v-container class="pb-5 mb-5">
     <v-row>
       <v-col cols="12">
-          <v-text-field
-                  outlined
-                  label="Início do nome (persnagens cujo nome começa por...)"
-                  v-model="search"
-                  clearable
-                  append-outer-icon="fas fa-search"
-                  @keydown="(event) => { if (event.keyCode === 13) { getCharacters(); return false; } }"
-                  @click:append-outer="getCharacters()"
-                ></v-text-field> 
+        <v-text-field
+          outlined
+          label="Início do nome (persnagens cujo nome começa por...)"
+          v-model="search"
+          clearable
+          append-outer-icon="fas fa-search"
+          @keydown="
+            event => {
+              if (event.keyCode === 13) {
+                getCharacters()
+                return false
+              }
+            }
+          "
+          @click:append-outer="getCharacters()"
+        ></v-text-field>
       </v-col>
       <v-col v-if="fetchingData">
         <v-icon>fas fa-spinner fa-spin</v-icon> Carregando personagens...
@@ -157,9 +164,9 @@ export default {
             vm.$snotify.error(error.message)
           })
       } catch (error) {
-          vm.fetchingData = false
-          console.debug(error)
-          vm.$snotify.error(error.message)
+        vm.fetchingData = false
+        console.debug(error)
+        vm.$snotify.error(error.message)
       }
       function generateParams() {
         let _params = []
