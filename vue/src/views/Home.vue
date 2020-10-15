@@ -9,7 +9,11 @@
         v-for="(char, ixChar) in characters"
         :key="ixChar"
       >
-        <v-card :disabled="loadingCharacter" min-width="200px" @click="openCharacter(char)">
+        <v-card
+          :disabled="loadingCharacter"
+          min-width="200px"
+          @click="openCharacter(char)"
+        >
           <v-img
             v-if="char.thumbnail"
             :src="
@@ -155,11 +159,17 @@ export default {
       vm.loadingCharacter = true
       console.debug(_char)
       vm.selectedCharacter = _char
-      vm.$API.Request('get', `characters/${_char.id}`)
-      .then(result => {
+      vm.$API
+        .Request('get', `characters/${_char.id}`)
+        .then(result => {
           // Preencher somente se retornar informações, já que a princípio, estas já são preenchidas anteriormente
           // com as informações vindas da getCharacterIndividual_get_0
-          if (result && result.data && result.data.results && result.data.results.length >= 1) {
+          if (
+            result &&
+            result.data &&
+            result.data.results &&
+            result.data.results.length >= 1
+          ) {
             result.data.results.forEach(character => {
               if (character.id === _char.id) {
                 vm.selectedCharacter = character
@@ -169,13 +179,14 @@ export default {
           // Mostrar o dialog para exibir informações do personagem
           vm.dialogs.character = true
           vm.loadingCharacter = false
-      }).catch(error => {
+        })
+        .catch(error => {
           console.debug(error)
           vm.$snotify.error(error.message)
           vm.loadingCharacter = false
           // Mostrar o dialog mesmo assim, já que as informações foram preenchidas mesmo antes da chamada da api
           vm.dialogs.character = true
-      })
+        })
     },
     closeCharacterDialog() {
       var vm = this

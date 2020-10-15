@@ -258,9 +258,13 @@ describe('Character.vue', () => {
 
     // Verifica se a descrição foi renderizada
     if (_char.description) {
-      expect(wrapper.find('#character-characterDescription').text()).toBe(_char.description)
+      expect(wrapper.find('#character-characterDescription').text()).toBe(
+        _char.description
+      )
     } else {
-      expect(wrapper.find('#character-characterDescription').text()).toBe('não disponível')
+      expect(wrapper.find('#character-characterDescription').text()).toBe(
+        'não disponível'
+      )
     }
   })
 })
