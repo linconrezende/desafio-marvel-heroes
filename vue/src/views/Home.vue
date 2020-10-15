@@ -51,13 +51,42 @@
         </v-row>
       </v-container>
     </v-footer>
+    <template>
+      <v-row justify="center">
+        <v-dialog
+          v-model="dialogs.character"
+          fullscreen
+          hide-overlay
+          transition="dialog-bottom-transition"
+        >
+          <v-card>
+            <v-toolbar color="primary">
+              <v-btn
+                icon
+                @click="selectedCharacter = null; dialogs.character = false"
+              >
+                <v-icon>fas fa-times</v-icon>
+              </v-btn>
+              <v-toolbar-title>Detalhes do personagem</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-toolbar-items>
+              </v-toolbar-items>
+            </v-toolbar>
+            <character :character="selectedCharacter" />
+          </v-card>
+        </v-dialog>
+      </v-row>
+    </template>
   </v-container>
 </template>
 
 <script>
+import Character from './../components/Character'
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    'character': Character
+  },
   data() {
     return {
       marvelCopy: null,
@@ -66,6 +95,9 @@ export default {
         page: 1,
         size: 20,
         total: 0
+      },
+      dialogs: {
+        character: false
       },
       fetchingData: false
     }
@@ -117,7 +149,10 @@ export default {
       }
     },
     openCharacter(_char) {
+      var vm = this
       console.debug(_char)
+      vm.selectedCharacter = _char
+      vm.dialogs.character = true
     },
     inputPagination(val) {
       var vm = this
