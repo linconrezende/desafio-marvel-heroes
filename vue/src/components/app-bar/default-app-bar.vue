@@ -6,7 +6,7 @@
       $router.currentRoute.meta.customName
     }}</v-toolbar-title>
     <v-spacer></v-spacer>
-    v0.0.2
+    v0.0.3
   </v-app-bar>
 </template>
 

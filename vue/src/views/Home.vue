@@ -1,6 +1,24 @@
 <template>
   <v-container class="pb-5 mb-5">
     <v-row>
+      <v-col cols="12">
+        <v-text-field
+          outlined
+          label="Início do nome (persnagens cujo nome começa por...)"
+          v-model="search"
+          clearable
+          append-outer-icon="fas fa-search"
+          @keydown="
+            event => {
+              if (event.keyCode === 13) {
+                getCharacters()
+                return false
+              }
+            }
+          "
+          @click:append-outer="getCharacters()"
+        ></v-text-field>
+      </v-col>
       <v-col v-if="fetchingData">
         <v-icon>fas fa-spinner fa-spin</v-icon> Carregando personagens...
       </v-col>
@@ -103,6 +121,7 @@ export default {
       dialogs: {
         character: false
       },
+      search: null,
       fetchingData: false,
       loadingCharacter: false,
       selectedCharacter: null
@@ -117,36 +136,45 @@ export default {
     getCharacters() {
       var vm = this
       vm.fetchingData = true
-      let _parameters = generateParams()
-      console.debug('API URL Params', _parameters)
-      vm.$API
-        .Request('get', 'characters', null, _parameters)
-        .then(result => {
-          vm.fetchingData = false
-          console.debug(result)
-          if (result && result.attributionHTML) {
-            vm.marvelCopy = result.attributionHTML
-          }
-          if (result && result.data) {
-            const _dt = result.data
-            // UPDATE PAGINATION
-            vm.pagination.total = _dt.total
-              ? Math.ceil(_dt.total / vm.pagination.size)
-              : 0
+      try {
+        let _parameters = generateParams()
+        console.debug('API URL Params', _parameters)
+        vm.$API
+          .Request('get', 'characters', null, _parameters)
+          .then(result => {
+            vm.fetchingData = false
+            console.debug(result)
+            if (result && result.attributionHTML) {
+              vm.marvelCopy = result.attributionHTML
+            }
+            if (result && result.data) {
+              const _dt = result.data
+              // UPDATE PAGINATION
+              vm.pagination.total = _dt.total
+                ? Math.ceil(_dt.total / vm.pagination.size)
+                : 0
 
-            // UPDATE CHARACTERS
-            vm.characters = _dt.results
-          }
-        })
-        .catch(error => {
-          console.debug(error)
-          vm.$snotify.error(error.message)
-          vm.fetchingData = false
-        })
+              // UPDATE CHARACTERS
+              vm.characters = _dt.results
+            }
+          })
+          .catch(error => {
+            vm.fetchingData = false
+            console.debug(error)
+            vm.$snotify.error(error.message)
+          })
+      } catch (error) {
+        vm.fetchingData = false
+        console.debug(error)
+        vm.$snotify.error(error.message)
+      }
       function generateParams() {
         let _params = []
         _params.push('orderBy=name') // Hardcoded for now
         _params.push(`limit=${vm.pagination.size}`)
+        if (vm.search && vm.search !== '') {
+          _params.push(`nameStartsWith=${vm.search}`)
+        }
         _params.push(
           `offset=${vm.pagination.page * vm.pagination.size -
             vm.pagination.size}`
