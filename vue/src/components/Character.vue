@@ -31,7 +31,10 @@
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div v-if="character.events && character.events.items">
-                  <p v-for="(obj, ixObj) in character.events.items" :key="ixObj">
+                  <p
+                    v-for="(obj, ixObj) in character.events.items"
+                    :key="ixObj"
+                  >
                     {{ obj.name }}
                   </p>
                 </div>
@@ -43,7 +46,10 @@
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div v-if="character.events && character.comics.items">
-                  <p v-for="(obj, ixObj) in character.comics.items" :key="ixObj">
+                  <p
+                    v-for="(obj, ixObj) in character.comics.items"
+                    :key="ixObj"
+                  >
                     {{ obj.name }}
                   </p>
                 </div>
@@ -55,7 +61,10 @@
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div v-if="character.events && character.series.items">
-                  <p v-for="(obj, ixObj) in character.series.items" :key="ixObj">
+                  <p
+                    v-for="(obj, ixObj) in character.series.items"
+                    :key="ixObj"
+                  >
                     {{ obj.name }}
                   </p>
                 </div>
@@ -67,7 +76,10 @@
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div v-if="character.events && character.stories.items">
-                  <p v-for="(obj, ixObj) in character.stories.items" :key="ixObj">
+                  <p
+                    v-for="(obj, ixObj) in character.stories.items"
+                    :key="ixObj"
+                  >
                     {{ obj.name }}
                   </p>
                 </div>
