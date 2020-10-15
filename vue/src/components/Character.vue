@@ -4,10 +4,10 @@
       <v-col v-if="fetchingData">
         <v-icon>fas fa-spinner fa-spin</v-icon> Carregando informações...
       </v-col>
-      <v-col v-else>
+      <v-col v-else-if="character">
         <v-card>
           <v-card-title class="pa-0 ma-0 text-h4">
-            <span>{{ character.name }}</span>
+            <span id="character-characterName">{{ character.name }}</span>
           </v-card-title>
           <v-img
             v-if="character.thumbnail"
@@ -30,9 +30,11 @@
                 Eventos
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p v-for="(obj, ixObj) in character.events.items" :key="ixObj">
-                  {{ obj.name }}
-                </p>
+                <div v-if="character.events && character.events.items">
+                  <p v-for="(obj, ixObj) in character.events.items" :key="ixObj">
+                    {{ obj.name }}
+                  </p>
+                </div>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
@@ -40,9 +42,11 @@
                 Comics
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p v-for="(obj, ixObj) in character.comics.items" :key="ixObj">
-                  {{ obj.name }}
-                </p>
+                <div v-if="character.events && character.comics.items">
+                  <p v-for="(obj, ixObj) in character.comics.items" :key="ixObj">
+                    {{ obj.name }}
+                  </p>
+                </div>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
@@ -50,9 +54,11 @@
                 Séries
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p v-for="(obj, ixObj) in character.series.items" :key="ixObj">
-                  {{ obj.name }}
-                </p>
+                <div v-if="character.events && character.series.items">
+                  <p v-for="(obj, ixObj) in character.series.items" :key="ixObj">
+                    {{ obj.name }}
+                  </p>
+                </div>
               </v-expansion-panel-content>
             </v-expansion-panel>
             <v-expansion-panel>
@@ -60,9 +66,11 @@
                 Histórias
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <p v-for="(obj, ixObj) in character.stories.items" :key="ixObj">
-                  {{ obj.name }}
-                </p>
+                <div v-if="character.events && character.stories.items">
+                  <p v-for="(obj, ixObj) in character.stories.items" :key="ixObj">
+                    {{ obj.name }}
+                  </p>
+                </div>
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
