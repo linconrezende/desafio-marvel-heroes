@@ -18,6 +18,11 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <preference name="android-minSdkVersion" value="22" />
+        <icon background="icons/android/mipmap-mdpi/beyonder.png" density="mdpi" foreground="icons/android/mipmap-mdpi/beyonder.png"/>
+        <icon background="icons/android/mipmap-hdpi/beyonder.png" density="hdpi" foreground="icons/android/mipmap-hdpi/beyonder.png"/>
+        <icon background="icons/android/mipmap-xhdpi/beyonder.png" density="xhdpi" foreground="icons/android/mipmap-xhdpi/beyonder.png"/>
+        <icon background="icons/android/mipmap-xxhdpi/beyonder.png" density="xxhdpi" foreground="icons/android/mipmap-xxhdpi/beyonder.png"/>
+        <icon background="icons/android/mipmap-xxxhdpi/beyonder.png" density="xxxhdpi" foreground="icons/android/mipmap-xxxhdpi/beyonder.png"/>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
