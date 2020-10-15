@@ -3,7 +3,7 @@ import md5 from 'md5'
 const vm = Vue.prototype
 const e = process.env
 const api_url = `${e.VUE_APP_API_PROTOCOL}://${e.VUE_APP_API_ROOT}/`
-const request = (_method, _api, _data) => {
+const request = (_method, _api, _data, _urlParams) => {
   console.debug(_method, _api, _data)
   return new Promise((resolve, reject) => {
     let _ts = 1
@@ -11,9 +11,10 @@ const request = (_method, _api, _data) => {
       `${_ts}${e.VUE_APP_API_PRIVATE_KEY}${e.VUE_APP_API_PUBLIC_KEY}`
     )
     console.log(_ts, _hash)
+    let _params = _urlParams && _urlParams.length > 0 ? `&${_urlParams.join('&')}` : ''
     vm.axios({
       method: _method,
-      url: `${api_url}${_api}?ts=${_ts}&hash=${_hash}&apikey=${e.VUE_APP_API_PUBLIC_KEY}`,
+      url: `${api_url}${_api}?ts=${_ts}&hash=${_hash}&apikey=${e.VUE_APP_API_PUBLIC_KEY}${_params}`,
       crossDomain: true,
       data: _data
     })
