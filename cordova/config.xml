@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.linconrezende.personagensmarvel" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.linconrezende.personagensmarvel" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Personagens Marvel</name>
     <description>
         APP para listar os personagens da marvel.
@@ -23,6 +23,9 @@
         <icon background="icons/android/mipmap-xhdpi/beyonder.png" density="xhdpi" foreground="icons/android/mipmap-xhdpi/beyonder.png"/>
         <icon background="icons/android/mipmap-xxhdpi/beyonder.png" density="xxhdpi" foreground="icons/android/mipmap-xxhdpi/beyonder.png"/>
         <icon background="icons/android/mipmap-xxxhdpi/beyonder.png" density="xxxhdpi" foreground="icons/android/mipmap-xxxhdpi/beyonder.png"/>
+        
+        <access origin="*" />
+        <allow-navigation href="*" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
